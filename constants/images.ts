@@ -39,7 +39,7 @@ export const homeCallout = {
 
 export const homeExplore = {
   napkin: "/home/napkin.avif",
-  brewedCoffee: "/home/explore/brewed-Coffee.avif",
+  brewedCoffee: "/home/explore/brewed-coffee.avif",
   coldIce: "/home/explore/cold-ice.avif",
   espresso: "/home/explore/espresso.avif",
   juices: "/home/explore/juices.avif",

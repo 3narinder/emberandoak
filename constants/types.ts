@@ -153,9 +153,12 @@ export type SectionLayoutProps = {
   showHeading?: boolean;
   description?: string;
   paddingClassName?: string;
+  revealOnScroll?: boolean;
 };
 
-export type RevealSectionProps = HTMLMotionProps<"section">;
+export type RevealSectionProps = HTMLMotionProps<"section"> & {
+  revealOnScroll?: boolean;
+};
 
 // RouteRevealDelayProvider: navigation callback and reveal state shared by page sections.
 export type RouteRevealDelayContextValue = {

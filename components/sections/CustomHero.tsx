@@ -13,7 +13,7 @@ const CustomHero = ({
   component,
 }: CustomHeroProps) => {
   return (
-    <SectionLayout paddingClassName={paddingClassName}>
+    <SectionLayout paddingClassName={paddingClassName} revealOnScroll={false}>
       {/* Decorative images */}
       {decorativeImages.map((image, index) => (
         <div

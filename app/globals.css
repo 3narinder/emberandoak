@@ -150,6 +150,11 @@ button:focus-visible {
   overflow: hidden;
   color: var(--color-cream);
   pointer-events: none;
+  visibility: hidden;
+}
+
+html[data-intro-shutter="active"] .intro-shutter {
+  visibility: visible;
 }
 
 .intro-shutter__panel {

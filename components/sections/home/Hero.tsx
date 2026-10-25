@@ -10,6 +10,7 @@ const Hero = () => {
   return (
     <RevealSection
       id="home-hero"
+      revealOnScroll={false}
       className="home-hero relative flex h-[90vh] w-full flex-col items-center justify-start gap-5 overflow-visible bg-cream pb-8 scroll-mt-24 tablet:min-h-[90vh] tablet:justify-between tablet:overflow-y-visible desktop:min-h-204 desktop:overflow-clip"
     >
       {/* bean 1 */}

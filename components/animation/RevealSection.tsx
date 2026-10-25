@@ -13,6 +13,7 @@ import type { RevealSectionProps } from "@/constants/types";
 
 export default function RevealSection({
   children,
+  revealOnScroll = true,
   ...props
 }: RevealSectionProps) {
   const reduceMotion = usePrefersReducedMotion();
@@ -22,11 +23,13 @@ export default function RevealSection({
     <motion.section
       {...props}
       variants={sectionRevealVariants}
-      initial="hidden"
-      animate={reduceMotion ? "visible" : undefined}
-      whileInView={reduceMotion ? undefined : "visible"}
+      initial={revealOnScroll ? "hidden" : false}
+      animate={reduceMotion || !revealOnScroll ? "visible" : undefined}
+      whileInView={
+        reduceMotion || !revealOnScroll ? undefined : "visible"
+      }
       transition={
-        reduceMotion
+        reduceMotion || !revealOnScroll
           ? { duration: 0 }
           : {
               ...(shouldDelayReveal
