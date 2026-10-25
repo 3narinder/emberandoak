@@ -317,8 +317,6 @@ export type ContactFormCopy = {
   incomplete: string;
   success: string;
   validationError: string;
-  unknownError: string;
-  requestError: string;
   contactHeading: string;
 };
 

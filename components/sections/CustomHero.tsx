@@ -19,12 +19,14 @@ const CustomHero = ({
         <div
           key={index}
           className={`pointer-events-none absolute z-0 ${image.className} mix-blend-multiply`}
+          aria-hidden="true"
         >
           <Image
             src={image.src}
-            alt={image.alt ?? ""}
+            alt=""
             width={image.width ?? 300}
             height={image.height ?? 300}
+            loading="eager"
             className="h-auto w-full object-contain"
           />
         </div>

@@ -5,7 +5,7 @@ import type {
 import type { FormFieldProps } from "@/constants/types";
 
 const fieldClassName =
-  "relative block h-auto w-full min-w-0 rounded-[20px] border border-[#0e4a2b1f] bg-[#f1e2d0b3] px-4 py-3 font-onest text-sm font-normal leading-[1.4em] tracking-normal text-green placeholder:text-[#0e4a2b73] focus:border-2 focus:border-[#0e4a2b80] focus:outline-none";
+  "relative block h-auto w-full min-w-0 rounded-[20px] border border-[#0e4a2b1f] bg-[#f1e2d0b3] px-4 py-3 font-onest text-sm font-normal leading-[1.4em] tracking-normal text-green placeholder:text-[#0e4a2b73] focus:border-2 focus:border-[#0e4a2b80] focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green";
 
 const FormField = ({
   label,

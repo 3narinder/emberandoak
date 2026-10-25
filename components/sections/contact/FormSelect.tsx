@@ -26,7 +26,7 @@ const FormSelect = ({
           id={id}
           name={name}
           required={required}
-          className="relative block h-auto w-full min-w-0 appearance-none rounded-[20px] border border-[#0e4a2b1f] bg-[#f1e2d0b3] py-3 pl-4 pr-11 font-onest text-sm font-normal leading-[1.4em] text-green focus:border-2 focus:border-[#0e4a2b80] focus:outline-none"
+          className="relative block h-auto w-full min-w-0 appearance-none rounded-[20px] border border-[#0e4a2b1f] bg-[#f1e2d0b3] py-3 pl-4 pr-11 font-onest text-sm font-normal leading-[1.4em] text-green focus:border-2 focus:border-[#0e4a2b80] focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
           {...props}
         >
           {options.map((option) => (

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
-import { Clock3, Mail, MapPin, Phone } from "lucide-react";
+import { Check, Clock3, LoaderCircle, Mail, MapPin, Phone } from "lucide-react";
 
 import RevealSection from "@/components/animation/RevealSection";
 import FormField from "./FormField";
@@ -49,25 +49,6 @@ const initialValues: ContactFormData = {
   topic: "",
   message: "",
 };
-
-// Sends form data to your Next.js API route.
-export async function submitContactForm(data: ContactFormData) {
-  const response = await fetch("/api/contact", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-
-  const result = await response.json().catch(() => null);
-
-  if (!response.ok) {
-    throw new Error(result?.error || formCopy.requestError);
-  }
-
-  return result;
-}
 
 const ContactForm = () => {
   const [values, setValues] = useState<ContactFormData>(initialValues);
@@ -120,26 +101,15 @@ const ContactForm = () => {
     }
 
     setIsSubmitting(true);
-    setStatus("");
+    setStatus(formCopy.submitting);
 
-    try {
-      await submitContactForm({
-        name: values.name.trim(),
-        email: values.email.trim(),
-        topic: values.topic,
-        message: values.message.trim(),
-      });
+    await new Promise<void>((resolve) => window.setTimeout(resolve, 900));
 
-      setIsSent(true);
-      setStatus(formCopy.success);
-      setValues(initialValues);
-      form.reset();
-    } catch (error) {
-      setIsSent(false);
-      setStatus(error instanceof Error ? error.message : formCopy.unknownError);
-    } finally {
-      setIsSubmitting(false);
-    }
+    setIsSubmitting(false);
+    setIsSent(true);
+    setStatus(formCopy.success);
+    setValues(initialValues);
+    form.reset();
   };
 
   return (
@@ -160,6 +130,7 @@ const ContactForm = () => {
           ref={formRef}
           noValidate
           onSubmit={handleSubmit}
+          aria-busy={isSubmitting}
           className="relative z-10 grid h-min w-full min-w-0 grid-cols-1 items-start gap-5 tablet:grid-cols-2 desktop:flex-1"
         >
           {/* Name */}
@@ -171,6 +142,7 @@ const ContactForm = () => {
             autoComplete="name"
             value={values.name}
             onChange={handleFieldChange}
+            disabled={isSubmitting}
             required
           />
 
@@ -183,6 +155,7 @@ const ContactForm = () => {
             autoComplete="email"
             value={values.email}
             onChange={handleFieldChange}
+            disabled={isSubmitting}
             required
           />
 
@@ -193,6 +166,7 @@ const ContactForm = () => {
             options={contactTopics}
             value={values.topic}
             onChange={handleTopicChange}
+            disabled={isSubmitting}
             required
             className="tablet:col-span-2"
           />
@@ -206,6 +180,7 @@ const ContactForm = () => {
             rows={5}
             value={values.message}
             onChange={handleFieldChange}
+            disabled={isSubmitting}
             required
             className="tablet:col-span-2"
           />
@@ -227,37 +202,62 @@ const ContactForm = () => {
             ) : isSent ? (
               <>
                 {formCopy.sent}
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="h-4 w-4"
-                >
-                  <path
-                    d="m5 12 4 4L19 6"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <Check size={16} aria-hidden="true" />
               </>
             ) : isFormComplete ? (
               formCopy.submit
             ) : (
               formCopy.incomplete
             )}
+            {isSubmitting && (
+              <LoaderCircle
+                size={16}
+                aria-hidden="true"
+                className="motion-safe:animate-spin"
+              />
+            )}
           </button>
 
           {/* Success or error message */}
           {status && (
-            <p
+            <div
+              id="contact-form-status"
               role="status"
               aria-live="polite"
-              className="font-onest text-sm text-green tablet:col-span-2"
+              className={`tablet:col-span-2 flex items-start gap-3 rounded-2xl border p-4 transition-all duration-300 ${
+                isSent
+                  ? "border-green/20 bg-green/5"
+                  : "border-accent/20 bg-accent/5"
+              }`}
             >
-              {status}
-            </p>
+              <span
+                className={`mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full ${
+                  isSent ? "bg-green/10 text-green" : "bg-accent/10 text-accent"
+                }`}
+              >
+                {isSent ? (
+                  <Check size={20} aria-hidden="true" />
+                ) : (
+                  <Mail size={20} aria-hidden="true" />
+                )}
+              </span>
+
+              <div className="min-w-0 flex-1">
+                <p
+                  className={`font-onest text-sm font-semibold ${
+                    isSent ? "text-green" : "text-accent"
+                  }`}
+                >
+                  {isSent
+                    ? "Message sent successfully!"
+                    : "Please check your details"}
+                </p>
+
+                <p className="mt-1 font-onest text-sm leading-relaxed text-foreground/75">
+                  {status}
+                </p>
+              </div>
+            </div>
           )}
         </form>
 

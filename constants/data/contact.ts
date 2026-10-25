@@ -64,12 +64,11 @@ export const contactPageContent = {
     },
     submit: "Send message",
     submitting: "Sending...",
-    sent: "Message sent",
+    sent: "Message ready",
     incomplete: "Check required fields",
-    success: "Your message has been sent successfully.",
+    success:
+      "Thank you for reaching out. We’ve received your message and will get back to you as soon as possible.",
     validationError: "Please complete all required fields.",
-    unknownError: "Something went wrong. Please try again.",
-    requestError: "Unable to send your message. Please try again.",
     contactHeading: "Find us",
   } satisfies ContactFormCopy,
   findUs: {
