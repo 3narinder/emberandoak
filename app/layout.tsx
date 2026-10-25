@@ -37,9 +37,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `if (window.location.pathname === "/" && !sessionStorage.getItem("common-grounds-home-shutter-played")) {
+            __html: `if (window.location.pathname === "/" && !sessionStorage.getItem("ember-and-oak-home-shutter-played")) {
               document.documentElement.dataset.introShutter = "active";
-              sessionStorage.setItem("common-grounds-home-shutter-played", "true");
+              sessionStorage.setItem("ember-and-oak-home-shutter-played", "true");
             }`,
           }}
         />

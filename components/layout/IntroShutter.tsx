@@ -11,7 +11,7 @@ import {
 } from "@/animations/variants";
 import { businessInfo } from "@/constants/data/reusable";
 
-const shutterSessionKey = "common-grounds-home-shutter-played";
+const shutterSessionKey = "ember-and-oak-home-shutter-played";
 
 export default function IntroShutter() {
   const [shouldShow, setShouldShow] = useState(false);
