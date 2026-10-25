@@ -11,9 +11,14 @@ const CallOutBand = ({ content }: CallOutBandProps) => {
       <div className="relative flex w-full flex-col items-center overflow-x-clip py-16">
         <div className="bg-green flex h-min w-full flex-col items-center overflow-x-clip">
           <div className="relative z-20 flex h-min w-full flex-col items-center gap-8 px-6 py-16">
-            <h2 className="heading-2 relative flex w-full flex-col items-center text-cream">
+            <h2 className="heading-2 relative flex w-full flex-col items-center text-center text-cream">
               {headingLines.map((line, index) => (
-                <span key={`${line}-${index}`}>{line}</span>
+                <span
+                  key={`${line}-${index}`}
+                  className="block w-full text-center"
+                >
+                  {line}
+                </span>
               ))}
             </h2>
 

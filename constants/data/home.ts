@@ -26,7 +26,7 @@ export const homePageContent = {
     decorativeImageAlts: ["Decorative cookie", "Decorative coffee beans"],
   },
   callout: {
-    headingLines: ["Coffee and breakfast,", "At your Local favorite"],
+    headingLines: ["Coffee & breakfast,", "At your Local favorite"],
     buttonLabel: "View menu",
     buttonHref: "/menu",
     images: [

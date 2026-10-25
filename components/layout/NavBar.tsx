@@ -151,15 +151,16 @@ export default function NavBar() {
               )}
             </ul>
 
-            <div className="flex items-end justify-between w-full pt-5 border-t border-green/15">
-              <address className="flex flex-col justify-end">
+            <div className="flex w-full flex-col items-start justify-between gap-4 border-t border-green/15 pt-5 tablet:flex-row tablet:items-end">
+              <address className="flex flex-col justify-end not-italic">
                 <a
                   href={businessInfo.phoneLink}
-                  className="font-onest font-semibold text-green-muted hover:text-green transition-colors mb-1 text-sm"
+                  className="mb-1 font-onest text-sm font-semibold text-green-muted transition-colors hover:text-green"
                 >
                   {businessInfo.phone}
                 </a>
-                <span className="text-green-text-muted text-xs font-onest ">
+
+                <span className="font-onest text-xs text-green-text-muted">
                   {businessInfo.address}
                 </span>
               </address>
@@ -173,7 +174,7 @@ export default function NavBar() {
                     <Link
                       href={href}
                       onClick={() => navigateFromMenu(href)}
-                      className="text-green-text-muted text-xs"
+                      className="text-xs text-green-text-muted"
                     >
                       {label}
                     </Link>

@@ -19,6 +19,7 @@ const OurStand = ({ image }: OurStandProps) => {
     <SectionLayout
       title={aboutPageContent.valuesHeading.title}
       description={aboutPageContent.valuesHeading.description}
+      paddingClassName="px-4 py-16 tablet:px-8 tablet:py-28 desktop:px-0 desktop:py-28"
     >
       <div
         className={`pointer-events-none absolute z-0 ${image.className} mix-blend-multiply`}

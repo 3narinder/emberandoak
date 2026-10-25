@@ -22,6 +22,7 @@ export default function AboutPage() {
         description={aboutPageContent.hero.description}
         decorativeImages={aboutPageContent.hero.decorativeImages}
         component={<Stats />}
+        paddingClassName="px-4 py-20 tablet:px-8 tablet:py-28 desktop:px-0 desktop:py-28"
       />
 
       {aboutPageContent.stories.map((story) => (
@@ -34,7 +35,7 @@ export default function AboutPage() {
           src: homeExplore.napkin,
           alt: "Our stand decorative image",
           className:
-            "hidden tablet:block will-change-transform opacity-100 pointer-events-none z-0 absolute w-64 h-64.75 -bottom-9.25 -left-24 translate-y-[68.12px] rotate-[-45deg]",
+            "hidden tablet:block will-change-transform opacity-100 pointer-events-none z-0 absolute w-64 h-64.75 -bottom-9.25 -left-24 translate-y-[68.12px] rotate-[-45deg] px-4",
         }}
       />
       <GoodToKnow />
