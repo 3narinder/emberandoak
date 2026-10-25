@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Oswald, Onest } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 import Footer from "@/components/layout/Footer";
@@ -35,13 +34,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
       className={`${oswald.variable} ${onest.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if (window.location.pathname === "/" && !sessionStorage.getItem("common-grounds-home-shutter-played")) {
+              document.documentElement.dataset.introShutter = "active";
+              sessionStorage.setItem("common-grounds-home-shutter-played", "true");
+            }`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
-        <Script id="intro-shutter-init" strategy="beforeInteractive">
-          {`if (window.location.pathname === "/" && !sessionStorage.getItem("common-grounds-home-shutter-played")) {
-            document.documentElement.dataset.introShutter = "active";
-            sessionStorage.setItem("common-grounds-home-shutter-played", "true");
-          }`}
-        </Script>
         <RouteRevealDelayProvider>
           <IntroShutter />
           <NavBar />
